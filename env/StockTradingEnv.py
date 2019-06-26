@@ -23,9 +23,18 @@ class StockTradingEnv(gym.Env):
     ...
   def reset(self):
     # Reset the state of the environment to an initial state
-    ...
+    self.balance = INITIAL_ACCOUNT_BALANCE
+    self.net_worth = INITIAL_ACCOUNT_BALANCE
+    self.max_net_worth = INITIAL_ACCOUNT_BALANCE
+    self.shares_held = 0
+    self.cost_basis = 0
+    self.total_shares_sold = 0
+    self.total_sales_value = 0
+ 
+  # Set the current step to a random point within the data frame
+  self.current_step = random.randint(0, len(self.df.loc[:, 'Open'].values) - 6)
+  return self._next_observation() 
+     ...
   def render(self, mode='human', close=False):
     # Render the environment to the screen
     ...
-
-    #tindeindienieni
